@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>@Model.val.moduleName</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="shortcut icon" href="/img/favicon.ico">
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/website.css" />
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootbox.min.js"></script>
+    </head>
+
+    <script>
+        var refresh = null;
+
+        function PageRefreshOn() {
+            var timeout = @Model.cfg.webPageRefresh;
+            refresh = setTimeout("location.reload(true);", timeout);
+        }
+
+        function PageRefreshOff() {
+            clearTimeout(refresh);
+        }
+
+        function ConfirmDialog(message, url) {
+            PageRefreshOff();
+            bootbox.confirm({
+                message: message,
+                buttons: {
+                    confirm: {
+                        label: "OK",
+                        className: "btn-success"
+                    },
+                    cancel: {
+                        label: "Cancel",
+                        className: "btn-danger"
+                    }
+                },
+                callback: function (result) {
+                    if (result === true) {
+                        window.location.href = url;
+                    }
+                    PageRefreshOn();
+                }
+            });
+        }
+
+        function AlertDialog(message) {
+            PageRefreshOff();
+            bootbox.alert({
+                message: message,
+                callback: function (result) {
+                    PageRefreshOn();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            PageRefreshOn();
+
+            $("#btn_config").click(function () {
+                window.location.href = "/config";
+            });
+
+            $("#btn_testing").click(function () {
+                ConfirmDialog("Testing the confirm dialog, redirect to config!", "/config");
+            });
+        });
+    </script>
+
+    <body oncontextmenu="return false;">
+        <div id="wrap">
+            <img src="/img/logo.png" class="img-logo" />
+            <hr>
+            <b>@Model.val.moduleName</b>&nbsp;
+            <input id="btn_config" type="button" class="btn btn-primary" value="Config" />&nbsp;
+            <input id="btn_testing" type="button" class="btn btn-primary" value="Testing" />
+            <hr>
+
+            <table align="left" width="1000px">
+                <tr>
+                    <th align="left" width="30%"><b><i>PARAMETER</i></b></th>
+                    <th align="left" width="70%"><b><i>VALUE</i></b></th>
+                </tr>
+                <tr>
+                    <td><b>Service Root Folder:</b></td>
+                    <td>@Model.val.rootFolder</td>
+                </tr>
+                <tr>
+                    <td><b>Debug Logging On:</b></td>
+                    <td>@Model.cfg.debugLogging</td>
+                </tr>
+                <tr>
+                    <td><b>Webserver On:</b></td>
+                    <td>@Model.cfg.webServerOn</td>
+                </tr>
+                <tr>
+                    <td><b>FTP Server On:</b></td>
+                    <td>@Model.cfg.ftpServerOn</td>
+                </tr>
+                <tr>
+                    <td><b>TCP/IP Server On:</b></td>
+                    <td>@Model.cfg.tcpipServerOn</td>
+                </tr>
+                <tr>
+                    <td><b>Shared Folder On:</b></td>
+                    <td>@Model.cfg.sharedFolderOn</td>
+                </tr>
+                <tr>
+                    <td><b>Timer Function On:</b></td>
+                    <td>@Model.cfg.timerFuncOn</td>
+                </tr>
+            </table>
+
+            <div id="push"></div>
+        </div>
+
+        <div id="footer">@Model.val.wsVersion</div>
+    </body>
+</html>

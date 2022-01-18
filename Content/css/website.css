@@ -1,0 +1,151 @@
+﻿/*-----------------------------------------------------------------------------*/
+/* General bugfixes with styles                                                */ 
+/*-----------------------------------------------------------------------------*/
+
+body {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* CSS fix to stop bootbox overflowing the right margin with scrollbar */
+.modal {
+    overflow-y: hidden;
+}
+
+body.modal-open,
+.modal-open
+.navbar-fixed-top,
+.modal-open
+.navbar-fixed-bottom {
+    margin-right: 0;
+}
+
+/*-----------------------------------------------------------------------------*/
+/* Sticky footer styles                                                        */ 
+/*-----------------------------------------------------------------------------*/
+
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto 100%;
+    margin: 0 auto -30px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 30px;
+    height: 30px;
+}
+
+#footer {
+    height: 50px;
+    margin-left: -5px;
+    margin-right: -5px;
+    text-align: center;
+    background-color: #D3D3D3;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/*-----------------------------------------------------------------------------*/
+/* Datatable scroll style with rounded corners                                 */ 
+/*-----------------------------------------------------------------------------*/
+
+.dataTables_wrapper .dataTables_scroll {
+    border: #337ab7 solid 2px !important;
+    margin: 1.5rem 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+div.dataTables_scrollHead table.dataTable {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    border: 0 !important;
+}
+
+table.dataTables_scrollBody {
+    overflow-x: hidden !important;
+    border-top: 1px solid #ccc;
+}
+
+.table {
+    border-left: 0px !important;
+    border-right: 0px !important;
+    table-layout: fixed;
+}
+
+table.dataTable thead th {
+    border-bottom: none;
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-bottom: none;
+}
+
+/*-----------------------------------------------------------------------------*/
+/* Website specific custom CSS                                                 */ 
+/*-----------------------------------------------------------------------------*/
+
+hr {
+    border: 0;
+    color: #D3D3D3;
+    background-color: #D3D3D3;
+    height: 2px;
+}
+
+.img-logo {
+    height: 12%;
+    width: 12%;
+    display: block;
+}
+
+.img-error {
+    height: 20%;
+    width: 20%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-truncate {
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
+    float: right;
+}
+
+.body-noborder {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    object-fit: contain;
+}
